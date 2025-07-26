@@ -1,5 +1,6 @@
-function createPara(text) {
+function createPara(text, className) {
   const para = document.createElement("p");
+  para.classList.add(className);
   para.textContent = `${text}`;
   return para;
 }
