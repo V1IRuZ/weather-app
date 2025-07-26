@@ -11,4 +11,25 @@ function resetDOM(container) {
   }
 }
 
-export { createPara, resetDOM };
+function getTempString(obj) {
+  const temp = Number(obj.temperature);
+  let weather;
+
+  if (temp >= 30) {
+    weather = "hot";
+  } else if (temp >= 20) {
+    weather = "warm";
+  } else if (temp >= 10) {
+    weather = "ok";
+  } else if (temp >= 0) {
+    weather = "cold";
+  } else if (temp < 0) {
+    weather = "freezing"
+  } else {
+    weather = "error";
+  }
+
+  return weather;
+}
+
+export { createPara, resetDOM, getTempString };
