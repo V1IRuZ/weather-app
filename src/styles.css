@@ -99,3 +99,34 @@ form > div {
 .btn {
   justify-content: flex-end;
 }
+
+.content {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+}
+
+.temp-wrapper {
+  display: flex;
+}
+
+.temperature {
+  font-size: 5rem;
+}
+
+span {
+  font-size: 3rem;
+}
+
+.info {
+  align-content: center;
+  justify-content: center;
+}
+
+.location {
+  font-size: 2rem;
+}
+
+.condition {
+  font-size: 1.5rem;
+}
