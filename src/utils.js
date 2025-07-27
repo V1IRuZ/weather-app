@@ -11,8 +11,12 @@ function resetDOM(container) {
   }
 }
 
+function toggleTemperatureUnit(element, obj) {
+  element.innerHTML = element.innerHTML.includes("C") ? `${obj.fahrenheit}&deg;F` : `${obj.celsius}&deg;C`;
+}
+
 function getTempString(obj) {
-  const temp = Number(obj.temperature);
+  const temp = Number(obj.celsius);
   let weather;
 
   if (temp >= 30) {
@@ -32,4 +36,4 @@ function getTempString(obj) {
   return weather;
 }
 
-export { createPara, resetDOM, getTempString };
+export { createPara, resetDOM, getTempString, toggleTemperatureUnit };
