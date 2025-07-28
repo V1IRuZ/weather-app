@@ -2,7 +2,8 @@ class Weather {
   constructor(location, condition, temperature) {
     this.location = location[0].toUpperCase() + location.slice(1).toLowerCase(), // First character uppercase, rest lowercase
     this.condition = condition,
-    this.temperature = Math.round((temperature - 32) * 5 / 9); // Convert to celsius
+    this.fahrenheit = Math.round(temperature)
+    this.celsius = Math.round((temperature - 32) * 5 / 9); // Convert to celsius
   }
 }
 
@@ -21,11 +22,12 @@ async function getWeather(location) {
 
     const locationData = data.currentConditions;
 
-    // console.log(data);
+    console.log(data);
+    console.log(locationData);
 
     const weather = new Weather(
       location,
-      locationData.conditions,
+      locationData.icon,
       locationData.temp,
     );
 
