@@ -10,8 +10,8 @@ function displayWeatherInfo(obj) {
   const location = createPara(obj.location, "location");
   infoWrapper.appendChild(location);
 
-  const condition = createPara(obj.condition, "condition");
-  infoWrapper.appendChild(condition);
+  // const condition = createPara(obj.condition, "condition");
+  // infoWrapper.appendChild(condition);
 
   const temperature = document.createElement("span");
   temperature.innerHTML = `${obj.celsius}&deg;C`;
@@ -23,10 +23,25 @@ function displayWeatherInfo(obj) {
   });
 }
 
-const img = document.querySelector("img");
+async function displayWeatherIcon(obj) {
+  try {
+    const icon = await import(`./icons/${obj.condition}.svg`)
+    const iconPath = icon.default;
+
+    const weatherIcon = document.createElement("img");
+    weatherIcon.src = iconPath;
+    weatherIcon.alt = `${obj.condition}`;
+    infoWrapper.appendChild(weatherIcon);
+
+  } catch (err) {
+    console.error("Icon failed to load:", err);
+  }
+}
+
+const img = document.querySelector(".giphyGif");
 
 function displayImg(imgSrc) {
   img.src = imgSrc;
 }
 
-export { displayWeatherInfo, displayImg };
+export { displayWeatherInfo, displayImg, displayWeatherIcon };
