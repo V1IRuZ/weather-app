@@ -15,6 +15,10 @@ function toggleTemperatureUnit(element, obj) {
   element.innerHTML = element.innerHTML.includes("C") ? `${obj.fahrenheit}&deg;F` : `${obj.celsius}&deg;C`;
 }
 
+function toggleEachDayTempUnit(element, obj) {
+  element.innerHTML = element.innerHTML.includes("C") ? `${obj.maxFahrenheit} / ${obj.maxFahrenheit}&deg;F` : `${obj.minCelsius} / ${obj.maxCelsius} &deg;C`;
+}
+
 function getTempString(obj) {
   const temp = Number(obj.celsius);
   let weather;
@@ -36,4 +40,4 @@ function getTempString(obj) {
   return weather;
 }
 
-export { createPara, resetDOM, getTempString, toggleTemperatureUnit };
+export { createPara, resetDOM, getTempString, toggleTemperatureUnit, toggleEachDayTempUnit };
