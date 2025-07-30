@@ -153,6 +153,23 @@ span {
   font-size: 1.5rem;
 }
 
+.week {
+  display: flex;
+  gap: 1.5em;
+  margin-bottom: 1em;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25em;
+  padding: 8px;
+  border: 2px solid var(--white);
+  border-radius: 10px;
+}
+
 .giphyGif {
   border: 2px solid var(--white);
   border-radius: 10px;
