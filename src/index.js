@@ -1,6 +1,6 @@
 import "./styles.css";
 import { getWeather } from "./weather-data";
-import { displayWeatherInfo, displayImg, displayWeatherIcon } from "./weather-ui";
+import { displayWeatherInfo, displayImg, displayWeatherIcon, infoWrapper, displayWeeklyWeather } from "./weather-ui";
 import { getWeatherImg } from "./weather-gif";
 import { getTempString } from "./utils";
 
@@ -21,7 +21,8 @@ async function init(location) {
     const imgSrc = getTempString(weatherData);
     const imgData = await getWeatherImg(imgSrc);
     displayWeatherInfo(weatherData);
-    await displayWeatherIcon(weatherData);
+    await displayWeatherIcon(weatherData.condition, infoWrapper);
+    await displayWeeklyWeather(weatherData.days)
     displayImg(imgData);
   } else {
     console.log("Weather data could not be loaded.");
