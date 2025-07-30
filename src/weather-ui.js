@@ -1,4 +1,4 @@
-import { createPara, resetDOM, toggleTemperatureUnit } from "./utils";
+import { createPara, resetDOM, toggleTemperatureUnit, toggleEachDayTempUnit } from "./utils";
 import { format } from "date-fns";
 
 const tempWrapper = document.querySelector(".temp-wrapper");
@@ -19,6 +19,7 @@ async function makeWeatherDayCard(day) {
   await displayWeatherIcon(day.icon, card);
 
   const temp = document.createElement("p");
+  temp.classList.add("day-temp");
   temp.innerHTML = `${day.minCelsius} / ${day.maxCelsius}&deg;C`;
   card.appendChild(temp);
 
@@ -40,13 +41,10 @@ function displayWeatherInfo(obj) {
   infoWrapper.appendChild(location);
 
   const temperature = document.createElement("span");
+  temperature.classList.add("current-temp");
   temperature.innerHTML = `${obj.celsius}&deg;C`;
   temperature.classList.add("temperature");
   tempWrapper.appendChild(temperature);
-
-  toggleBtn.addEventListener("click", () => {
-    toggleTemperatureUnit(temperature, obj);
-  });
 }
 
 async function displayWeatherIcon(iconName, container) {
@@ -64,10 +62,21 @@ async function displayWeatherIcon(iconName, container) {
   }
 }
 
+function addTemperatureUnitToggleEvents (obj) {
+  const currentTemp =  document.querySelector(".current-temp");
+  const daysTemp = document.querySelectorAll(".day-temp");
+    toggleBtn.addEventListener("click", () => {
+    toggleTemperatureUnit(currentTemp, obj);
+    daysTemp.forEach((day, index) => {
+      toggleEachDayTempUnit(day, obj.days[index]);
+    })
+  });
+}
+
 const img = document.querySelector(".giphyGif");
 
 function displayImg(imgSrc) {
   img.src = imgSrc;
 }
 
-export { displayWeatherInfo, displayWeeklyWeather, displayImg, displayWeatherIcon, infoWrapper };
+export { displayWeatherInfo, displayWeeklyWeather, displayImg, displayWeatherIcon, addTemperatureUnitToggleEvents, infoWrapper };
