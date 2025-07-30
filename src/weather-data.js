@@ -4,6 +4,26 @@ class Weather {
     this.condition = condition,
     this.fahrenheit = Math.round(temperature)
     this.celsius = Math.round((temperature - 32) * 5 / 9); // Convert to celsius
+    this.days = [];
+  }
+
+  addWeeklyWeatherForecast(dayObj) {
+    for (let i = 0; i < 7; i++) {
+      let dayData = dayObj[i];
+      let day = new Day(dayData.datetime, dayData.icon, dayData.tempmin, dayData.tempmax);
+      this.days.push(day);
+    }
+  }
+}
+
+class Day {
+  constructor(date, icon, minTemp, maxTemp) {
+    this.date = date;
+    this.icon = icon;
+    this.minFahrenheit = Math.round(minTemp);
+    this.minCelsius = Math.round((minTemp - 32) * 5 / 9);
+    this.maxFahrenheit = Math.round(maxTemp);
+    this.maxCelsius = Math.round((maxTemp - 32) * 5 / 9);
   }
 }
 
@@ -21,8 +41,9 @@ async function getWeather(location) {
     const data = await response.json();
 
     const locationData = data.currentConditions;
+    const daysData = data.days;
 
-    console.log(data);
+    console.log(daysData);
     console.log(locationData);
 
     const weather = new Weather(
@@ -31,7 +52,9 @@ async function getWeather(location) {
       locationData.temp,
     );
 
-    // console.log(weather);
+    weather.addWeeklyWeatherForecast(daysData);
+
+    console.log(weather.days[0]);
     return weather;
 
   } catch (err) {
