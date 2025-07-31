@@ -114,8 +114,22 @@ input {
   color: var(--white);
 }
 
+.toggle-wrapper {
+  align-content: center;
+}
+
 .toggle {
-  padding: 4px 8px;
+  font-size: 2rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.toggle:hover {
+  background-color: #272763
+}
+
+.toggle:active {
+  background-color: #353555;
 }
 
 .btn {
@@ -130,7 +144,7 @@ input {
 .content {
   display: flex;
   justify-content: center;
-  gap: 1em;
+  gap: 2em;
   padding: 1em;
 }
 
@@ -176,7 +190,7 @@ span {
 .week {
   display: flex;
   gap: 1.5em;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .day-card {
