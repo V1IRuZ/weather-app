@@ -16,7 +16,7 @@ function toggleTemperatureUnit(element, obj) {
 }
 
 function toggleEachDayTempUnit(element, obj) {
-  element.innerHTML = element.innerHTML.includes("C") ? `${obj.maxFahrenheit} / ${obj.maxFahrenheit}&deg;F` : `${obj.minCelsius} / ${obj.maxCelsius}&deg;C`;
+  element.innerHTML = element.innerHTML.includes("C") ? `${obj.minFahrenheit} / ${obj.maxFahrenheit}&deg;F` : `${obj.minCelsius} / ${obj.maxCelsius}&deg;C`;
 }
 
 function getTempString(obj) {
