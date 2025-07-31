@@ -1,4 +1,9 @@
-import { createPara, resetDOM, toggleTemperatureUnit, toggleEachDayTempUnit } from "./utils";
+import {
+  createPara,
+  resetDOM,
+  toggleTemperatureUnit,
+  toggleEachDayTempUnit,
+} from "./utils";
 import { format } from "date-fns";
 
 const tempWrapper = document.querySelector(".temp-wrapper");
@@ -12,7 +17,7 @@ async function makeWeatherDayCard(day) {
 
   const date = document.createElement("p");
   const parsedDate = new Date(day.date);
-  const formattedDate = format(parsedDate, "d.M")  
+  const formattedDate = format(parsedDate, "d.M");
   date.textContent = `${formattedDate}`;
   card.appendChild(date);
 
@@ -23,12 +28,12 @@ async function makeWeatherDayCard(day) {
   temp.innerHTML = `${day.minCelsius} / ${day.maxCelsius}&deg;C`;
   card.appendChild(temp);
 
-  return card
+  return card;
 }
 
 async function displayWeeklyWeather(daysData) {
   resetDOM(weekDaysContainer);
-  for(const day of daysData) {
+  for (const day of daysData) {
     const card = await makeWeatherDayCard(day);
     weekDaysContainer.appendChild(card);
   }
@@ -49,27 +54,28 @@ function displayWeatherInfo(obj) {
 
 async function displayWeatherIcon(iconName, container) {
   try {
-    const icon = await import(`./icons/${iconName}.svg`)
+    const icon = await import(`./icons/${iconName}.svg`);
     const iconPath = icon.default;
 
     const weatherIcon = document.createElement("img");
     weatherIcon.src = iconPath;
     weatherIcon.alt = `${iconName}`;
     container.appendChild(weatherIcon);
-
   } catch (err) {
     console.error("Icon failed to load:", err);
   }
 }
 
-function addTemperatureUnitToggleEvents (obj) {
-  const currentTemp =  document.querySelector(".current-temp");
+function addTemperatureUnitToggleEvents(obj) {
+  const currentTemp = document.querySelector(".current-temp");
   const daysTemp = document.querySelectorAll(".day-temp");
-    toggleBtn.addEventListener("click", () => {
+
+  toggleBtn.addEventListener("click", () => {
     toggleTemperatureUnit(currentTemp, obj);
+
     daysTemp.forEach((day, index) => {
       toggleEachDayTempUnit(day, obj.days[index]);
-    })
+    });
   });
 }
 
@@ -79,4 +85,11 @@ function displayImg(imgSrc) {
   img.src = imgSrc;
 }
 
-export { displayWeatherInfo, displayWeeklyWeather, displayImg, displayWeatherIcon, addTemperatureUnitToggleEvents, infoWrapper };
+export {
+  displayWeatherInfo,
+  displayWeeklyWeather,
+  displayImg,
+  displayWeatherIcon,
+  addTemperatureUnitToggleEvents,
+  infoWrapper,
+};
