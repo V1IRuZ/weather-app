@@ -8,6 +8,7 @@ import { format } from "date-fns";
 
 const tempWrapper = document.querySelector(".temp-wrapper");
 const infoWrapper = document.querySelector(".info");
+const descriptionWrapper = document.querySelector(".current-description");
 const toggleBtn = document.querySelector(".toggle");
 const weekDaysContainer = document.querySelector(".week");
 
@@ -42,6 +43,8 @@ async function displayWeeklyWeather(daysData) {
 function displayWeatherInfo(obj) {
   resetDOM(tempWrapper);
   resetDOM(infoWrapper);
+  resetDOM(descriptionWrapper);
+
   const location = createPara(obj.location, "location");
   infoWrapper.appendChild(location);
 
@@ -50,6 +53,12 @@ function displayWeatherInfo(obj) {
   temperature.innerHTML = `${obj.celsius}&deg;C`;
   temperature.classList.add("temperature");
   tempWrapper.appendChild(temperature);
+
+  const description = createPara(
+    `Current weather: ${obj.description}`,
+    "description",
+  );
+  descriptionWrapper.appendChild(description);
 }
 
 async function displayWeatherIcon(iconName, container) {
