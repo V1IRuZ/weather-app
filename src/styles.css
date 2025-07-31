@@ -112,6 +112,11 @@ input {
   background-color: var(--dark-blue);
   border: 2px solid var(--white);
   color: var(--white);
+  outline: none;
+}
+
+.search {
+  height: 1.5em;
 }
 
 .toggle-wrapper {
