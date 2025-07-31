@@ -1,7 +1,7 @@
 import "./styles.css";
 import { getWeather } from "./weather-data";
 import {
-  displayWeatherInfo,
+  displayCurrentWeather,
   displayImg,
   displayWeatherIcon,
   infoWrapper,
@@ -36,8 +36,8 @@ async function init(location) {
   if (weatherData) {
     const imgSrc = getTempString(weatherData);
     const imgData = await getWeatherImg(imgSrc);
-    
-    displayWeatherInfo(weatherData);
+
+    displayCurrentWeather(weatherData);
     await displayWeatherIcon(weatherData.condition, infoWrapper);
     await displayWeeklyWeather(weatherData.days);
     displayImg(imgData);

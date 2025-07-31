@@ -40,7 +40,7 @@ async function displayWeeklyWeather(daysData) {
   }
 }
 
-function displayWeatherInfo(obj) {
+function displayCurrentWeather(obj) {
   resetDOM(tempWrapper);
   resetDOM(infoWrapper);
   resetDOM(descriptionWrapper);
@@ -95,7 +95,7 @@ function displayImg(imgSrc) {
 }
 
 export {
-  displayWeatherInfo,
+  displayCurrentWeather,
   displayWeeklyWeather,
   displayImg,
   displayWeatherIcon,
