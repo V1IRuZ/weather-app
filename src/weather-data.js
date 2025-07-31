@@ -1,10 +1,11 @@
 class Weather {
-  constructor(location, condition, temperature) {
+  constructor(location, condition, temperature, description) {
     (this.location =
       location[0].toUpperCase() + location.slice(1).toLowerCase()), // First character uppercase, rest lowercase
       (this.condition = condition),
       (this.fahrenheit = Math.round(temperature));
     this.celsius = Math.round(((temperature - 32) * 5) / 9); // Convert to celsius
+    this.description = description;
     this.days = [];
   }
 
@@ -49,11 +50,11 @@ async function getWeather(location) {
     const locationData = data.currentConditions;
     const daysData = data.days;
 
-    const weather = new Weather(location, locationData.icon, locationData.temp);
+    const weather = new Weather(location, locationData.icon, locationData.temp, locationData.conditions);
 
     weather.addWeeklyWeatherForecast(daysData);
     return weather;
-    
+
   } catch (err) {
     console.error("Error fetching weather:", err.message);
     return null;
