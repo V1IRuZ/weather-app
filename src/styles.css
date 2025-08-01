@@ -146,11 +146,13 @@ input:focus {
   border-radius: 10px;
 }
 
-.toggle:hover {
+.toggle:hover,
+.btn > button:hover {
   background-color: var(--hover-blue);
 }
 
-.toggle:active {
+.toggle:active,
+.btn > button:active {
   background-color: var(--active-blue);
 }
 
@@ -161,14 +163,6 @@ input:focus {
 .btn > button {
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
-}
-
-.btn > button:hover {
-  background-color: var(--hover-blue);
-}
-
-.btn > button:active {
-  background-color: var(--active-blue);
 }
 
 .container {
@@ -214,10 +208,7 @@ span {
   font-size: 2rem;
 }
 
-.condition {
-  font-size: 1.5rem;
-}
-
+.condition,
 .description {
   font-size: 1.5rem;
 }
