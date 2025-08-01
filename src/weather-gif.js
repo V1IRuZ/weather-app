@@ -1,4 +1,4 @@
-async function getWeatherImg(weather) {
+export default async function getGiphyGif(weather) {
   const apiKey = "JsTvY8DZjCDCPimPNeQMhxRKuiSYw5x0";
   const url = `https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=${weather}`;
 
@@ -7,5 +7,3 @@ async function getWeatherImg(weather) {
   const source = data.data.images.original.url;
   return source;
 }
-
-export { getWeatherImg }

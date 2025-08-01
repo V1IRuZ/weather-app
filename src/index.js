@@ -8,7 +8,7 @@ import {
   displayWeeklyWeather,
   addTemperatureUnitToggleEvents,
 } from "./weather-ui";
-import { getWeatherImg } from "./weather-gif";
+import getGiphyGif from "./weather-gif";
 import { getGiphySearchWord } from "./utils";
 
 const input = document.querySelector("#location");
@@ -34,13 +34,14 @@ async function init(location) {
   const weatherData = await getWeather(location);
 
   if (weatherData) {
-    const imgSrc = getGiphySearchWord(weatherData);
-    const imgData = await getWeatherImg(imgSrc);
+    const word = getGiphySearchWord(weatherData);
+    const gifData = await getGiphyGif(word);
 
     displayCurrentWeather(weatherData);
     await displayWeatherIcon(weatherData.condition, infoWrapper);
+    
     await displayWeeklyWeather(weatherData.days);
-    displayImg(imgData);
+    displayImg(gifData);
     addTemperatureUnitToggleEvents(weatherData);
   } else {
     console.log("Weather data could not be loaded.");
