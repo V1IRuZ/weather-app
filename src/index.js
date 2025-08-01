@@ -2,7 +2,7 @@ import "./styles.css";
 import getWeatherData from "./weather-data";
 import {
   displayCurrentWeather,
-  displayImg,
+  displayGiphyGif,
   displayWeatherIcon,
   infoWrapper,
   displayWeeklyWeather,
@@ -41,7 +41,7 @@ async function init(location) {
     await displayWeatherIcon(weatherData.condition, infoWrapper);
 
     await displayWeeklyWeather(weatherData.days);
-    displayImg(gifData);
+    displayGiphyGif(gifData);
     addTemperatureUnitToggleEvents(weatherData);
   } else {
     console.log("Weather data could not be loaded.");

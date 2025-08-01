@@ -88,16 +88,16 @@ function addTemperatureUnitToggleEvents(obj) {
   });
 }
 
-const img = document.querySelector(".giphyGif");
 
-function displayImg(imgSrc) {
+function displayGiphyGif(imgSrc) {
+  const img = document.querySelector(".giphyGif");
   img.src = imgSrc;
 }
 
 export {
   displayCurrentWeather,
   displayWeeklyWeather,
-  displayImg,
+  displayGiphyGif,
   displayWeatherIcon,
   addTemperatureUnitToggleEvents,
   infoWrapper,
