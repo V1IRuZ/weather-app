@@ -21,7 +21,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const data = input.value;
-    await init(data);
+    await main(data);
   } catch (error) {
     console.error(error);
   } finally {
@@ -30,7 +30,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-async function init(location) {
+async function main(location) {
   const weatherData = await getWeatherData(location);
 
   if (weatherData) {
@@ -48,4 +48,4 @@ async function init(location) {
   }
 }
 
-init("helsinki");
+main("helsinki");
