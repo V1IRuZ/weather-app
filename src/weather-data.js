@@ -35,7 +35,7 @@ class Day {
   }
 }
 
-async function getWeather(location) {
+export default async function getWeatherData(location) {
   const apiKey = "59MW3J2YZPNZMZWKMG5R4D4NM";
   let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}`;
 
@@ -47,18 +47,20 @@ async function getWeather(location) {
     }
 
     const data = await response.json();
-    const locationData = data.currentConditions;
+    const currentData = data.currentConditions;
     const daysData = data.days;
 
-    const weather = new Weather(location, locationData.icon, locationData.temp, locationData.conditions);
-
+    const weather = new Weather(
+      location,
+      currentData.icon,
+      currentData.temp,
+      currentData.conditions,
+    );
+    
     weather.addWeeklyWeatherForecast(daysData);
     return weather;
-
   } catch (err) {
     console.error("Error fetching weather:", err.message);
     return null;
   }
 }
-
-export { getWeather };

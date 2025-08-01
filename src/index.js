@@ -1,5 +1,5 @@
 import "./styles.css";
-import { getWeather } from "./weather-data";
+import getWeatherData from "./weather-data";
 import {
   displayCurrentWeather,
   displayImg,
@@ -31,7 +31,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 async function init(location) {
-  const weatherData = await getWeather(location);
+  const weatherData = await getWeatherData(location);
 
   if (weatherData) {
     const word = getGiphySearchWord(weatherData);
@@ -39,7 +39,7 @@ async function init(location) {
 
     displayCurrentWeather(weatherData);
     await displayWeatherIcon(weatherData.condition, infoWrapper);
-    
+
     await displayWeeklyWeather(weatherData.days);
     displayImg(gifData);
     addTemperatureUnitToggleEvents(weatherData);
