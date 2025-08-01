@@ -11,15 +11,19 @@ function resetDOM(container) {
   }
 }
 
-function toggleTemperatureUnit(element, obj) {
-  element.innerHTML = element.innerHTML.includes("C") ? `${obj.fahrenheit}&deg;F` : `${obj.celsius}&deg;C`;
+function toggleCurrentTempUnit(element, obj) {
+  element.innerHTML = element.innerHTML.includes("C")
+    ? `${obj.fahrenheit}&deg;F`
+    : `${obj.celsius}&deg;C`;
 }
 
 function toggleEachDayTempUnit(element, obj) {
-  element.innerHTML = element.innerHTML.includes("C") ? `${obj.minFahrenheit} / ${obj.maxFahrenheit}&deg;F` : `${obj.minCelsius} / ${obj.maxCelsius}&deg;C`;
+  element.innerHTML = element.innerHTML.includes("C")
+    ? `${obj.minFahrenheit} / ${obj.maxFahrenheit}&deg;F`
+    : `${obj.minCelsius} / ${obj.maxCelsius}&deg;C`;
 }
 
-function getTempString(obj) {
+function getGiphySearchWord(obj) {
   const temp = Number(obj.celsius);
   let weather;
 
@@ -32,7 +36,7 @@ function getTempString(obj) {
   } else if (temp >= 0) {
     weather = "cold";
   } else if (temp < 0) {
-    weather = "freezing"
+    weather = "freezing";
   } else {
     weather = "error";
   }
@@ -40,4 +44,10 @@ function getTempString(obj) {
   return weather;
 }
 
-export { createPara, resetDOM, getTempString, toggleTemperatureUnit, toggleEachDayTempUnit };
+export {
+  createPara,
+  resetDOM,
+  getGiphySearchWord,
+  toggleCurrentTempUnit,
+  toggleEachDayTempUnit,
+};

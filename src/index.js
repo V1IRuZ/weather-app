@@ -9,7 +9,7 @@ import {
   addTemperatureUnitToggleEvents,
 } from "./weather-ui";
 import { getWeatherImg } from "./weather-gif";
-import { getTempString } from "./utils";
+import { getGiphySearchWord } from "./utils";
 
 const input = document.querySelector("#location");
 const form = document.querySelector("form");
@@ -34,7 +34,7 @@ async function init(location) {
   const weatherData = await getWeather(location);
 
   if (weatherData) {
-    const imgSrc = getTempString(weatherData);
+    const imgSrc = getGiphySearchWord(weatherData);
     const imgData = await getWeatherImg(imgSrc);
 
     displayCurrentWeather(weatherData);

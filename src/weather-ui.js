@@ -1,7 +1,7 @@
 import {
   createPara,
   resetDOM,
-  toggleTemperatureUnit,
+  toggleCurrentTempUnit,
   toggleEachDayTempUnit,
 } from "./utils";
 import { format } from "date-fns";
@@ -80,7 +80,7 @@ function addTemperatureUnitToggleEvents(obj) {
   const daysTemp = document.querySelectorAll(".day-temp");
 
   toggleBtn.addEventListener("click", () => {
-    toggleTemperatureUnit(currentTemp, obj);
+    toggleCurrentTempUnit(currentTemp, obj);
 
     daysTemp.forEach((day, index) => {
       toggleEachDayTempUnit(day, obj.days[index]);
