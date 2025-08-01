@@ -10,7 +10,7 @@ const tempWrapper = document.querySelector(".temp-wrapper");
 const infoWrapper = document.querySelector(".info");
 const descriptionWrapper = document.querySelector(".current-description");
 const toggleBtn = document.querySelector(".toggle");
-const weekDaysContainer = document.querySelector(".week");
+const weeksWeatherContainer = document.querySelector(".week");
 
 async function makeWeatherDayCard(day) {
   const card = document.createElement("div");
@@ -33,10 +33,10 @@ async function makeWeatherDayCard(day) {
 }
 
 async function displayWeeklyWeather(daysData) {
-  resetDOM(weekDaysContainer);
+  resetDOM(weeksWeatherContainer);
   for (const day of daysData) {
     const card = await makeWeatherDayCard(day);
-    weekDaysContainer.appendChild(card);
+    weeksWeatherContainer.appendChild(card);
   }
 }
 
@@ -87,7 +87,6 @@ function addTemperatureUnitToggleEvents(obj) {
     });
   });
 }
-
 
 function displayGiphyGif(imgSrc) {
   const img = document.querySelector(".giphyGif");
